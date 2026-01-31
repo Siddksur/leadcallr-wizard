@@ -320,7 +320,7 @@ function IntroStep({ onNext }) {
         Start Assessment →
       </button>
 
-      <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '32px' }}>Takes about 2 minutes • No obligation</p>
+      <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '32px' }}>Takes about 2 minutes</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', paddingTop: '32px', borderTop: '1px solid #e2e8f0', maxWidth: '320px', margin: '0 auto' }}>
         {[
