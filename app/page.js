@@ -1160,7 +1160,7 @@ function ResultsStep({ results, showResults, onRestart }) {
               Start Your Free Trial
             </h3>
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/g9bJBw8OHuWnYjXl9EgR"
+              src={`https://api.leadconnectorhq.com/widget/form/g9bJBw8OHuWnYjXl9EgR?database_size=${results.dbSize}&avg_price=${results.gciPerDeal}&monthly_new_leads=${results.monthlyNewLeads}&prospecting_hours=${results.prospectingHours}&db_deals=${results.dbDeals}&db_gci=${results.dbGCI}&yearly_new_lead_deals=${results.yearlyNewLeadDeals}&yearly_new_lead_gci=${results.yearlyNewLeadGCI}&total_year1_gci=${results.totalYear1GCI}&roi=${results.roi}&fit_score=${results.fitScore}`}
               style={{ width: '100%', height: '600px', border: 'none' }}
               title="LeadCallr Free Trial"
             />
