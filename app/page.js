@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Realistic industry metrics
 const BENCHMARKS = {
@@ -24,7 +24,6 @@ const steps = [
   'leadgen',
   'followup',
   'results-current',
-  'contact',
   'results',
 ];
 
@@ -45,10 +44,6 @@ export default function VoiceAIAssessment() {
     isaCost: 0,
     prospectingHours: 5,
     currentAppointments: 0,
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
   });
 
   const [results, setResults] = useState(null);
@@ -193,11 +188,15 @@ export default function VoiceAIAssessment() {
     };
   };
 
-  const handleSubmitContact = () => {
+  const handleSubmitResults = () => {
     const calculatedResults = calculateResults();
     setResults(calculatedResults);
-    nextStep();
-    setTimeout(() => setShowResults(true), 500);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentStep(steps.indexOf('results'));
+      setIsAnimating(false);
+      setTimeout(() => setShowResults(true), 500);
+    }, 300);
   };
 
   const handleRestart = () => {
@@ -216,10 +215,6 @@ export default function VoiceAIAssessment() {
       isaCost: 0,
       prospectingHours: 5,
       currentAppointments: 0,
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
     });
     setResults(null);
     setShowResults(false);
@@ -242,11 +237,9 @@ export default function VoiceAIAssessment() {
       case 'followup':
         return <FollowUpStep data={formData} updateField={updateField} onNext={nextStep} onBack={prevStep} />;
       case 'results-current':
-        return <CurrentResultsStep data={formData} updateField={updateField} onNext={nextStep} onBack={prevStep} />;
-      case 'contact':
-        return <ContactStep data={formData} updateField={updateField} onSubmit={handleSubmitContact} onBack={prevStep} />;
+        return <CurrentResultsStep data={formData} updateField={updateField} onSubmit={handleSubmitResults} onBack={prevStep} />;
       case 'results':
-        return <ResultsStep results={results} data={formData} showResults={showResults} onRestart={handleRestart} />;
+        return <ResultsStep results={results} showResults={showResults} onRestart={handleRestart} />;
       default:
         return null;
     }
@@ -785,7 +778,7 @@ function FollowUpStep({ data, updateField, onNext, onBack }) {
   );
 }
 
-function CurrentResultsStep({ data, updateField, onNext, onBack }) {
+function CurrentResultsStep({ data, updateField, onSubmit, onBack }) {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
@@ -854,106 +847,7 @@ function CurrentResultsStep({ data, updateField, onNext, onBack }) {
         <button onClick={onBack} style={{ padding: '14px 24px', border: '1px solid #e2e8f0', borderRadius: '9999px', fontWeight: '500', backgroundColor: 'white', cursor: 'pointer', color: '#374151' }}>
           Back
         </button>
-        <button onClick={onNext} style={{ flex: 1, padding: '14px 24px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer' }}>
-          Continue
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function ContactStep({ data, updateField, onSubmit, onBack }) {
-  const isValid = data.firstName && data.email && data.phone;
-
-  const inputStyle = {
-    width: '100%',
-    padding: '14px 16px',
-    backgroundColor: 'white',
-    border: '1px solid #e2e8f0',
-    borderRadius: '12px',
-    fontSize: '16px',
-    outline: 'none',
-    color: '#0f172a'
-  };
-
-  return (
-    <div>
-      <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Final Step</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Where should we send your results?</h2>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-          <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>First name *</label>
-            <input
-              type="text"
-              value={data.firstName}
-              onChange={(e) => updateField('firstName', e.target.value)}
-              placeholder="John"
-              style={inputStyle}
-            />
-          </div>
-          <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>Last name</label>
-            <input
-              type="text"
-              value={data.lastName}
-              onChange={(e) => updateField('lastName', e.target.value)}
-              placeholder="Smith"
-              style={inputStyle}
-            />
-          </div>
-        </div>
-
-        <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>Email *</label>
-          <input
-            type="email"
-            value={data.email}
-            onChange={(e) => updateField('email', e.target.value)}
-            placeholder="john@example.com"
-            style={inputStyle}
-          />
-        </div>
-
-        <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>Phone *</label>
-          <input
-            type="tel"
-            value={data.phone}
-            onChange={(e) => updateField('phone', e.target.value)}
-            placeholder="(416) 555-1234"
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', marginTop: '24px' }}>
-        <p style={{ fontSize: '14px', color: '#64748b' }}>
-          Your information is secure and will only be used to deliver your personalized results.
-        </p>
-      </div>
-
-      <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
-        <button onClick={onBack} style={{ padding: '14px 24px', border: '1px solid #e2e8f0', borderRadius: '9999px', fontWeight: '500', backgroundColor: 'white', cursor: 'pointer', color: '#374151' }}>
-          Back
-        </button>
-        <button
-          onClick={onSubmit}
-          disabled={!isValid}
-          style={{ 
-            flex: 1, 
-            padding: '14px 24px', 
-            backgroundColor: isValid ? '#0f172a' : '#94a3b8', 
-            color: 'white', 
-            borderRadius: '9999px', 
-            fontWeight: '600', 
-            border: 'none', 
-            cursor: isValid ? 'pointer' : 'not-allowed' 
-          }}
-        >
+        <button onClick={onSubmit} style={{ flex: 1, padding: '14px 24px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer' }}>
           See My Results →
         </button>
       </div>
@@ -961,7 +855,21 @@ function ContactStep({ data, updateField, onSubmit, onBack }) {
   );
 }
 
-function ResultsStep({ results, data, showResults, onRestart }) {
+function ResultsStep({ results, showResults, onRestart }) {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://link.msgsndr.com/js/form_embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   if (!results) return null;
 
   const getFitColor = (level) => {
@@ -1006,7 +914,7 @@ function ResultsStep({ results, data, showResults, onRestart }) {
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: getFitColor(results.fitLevel) }} />
           <span style={{ color: getFitColor(results.fitLevel) }}>{getFitLabel(results.fitLevel)}</span>
         </div>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>{data.firstName}, here's your analysis</h2>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Here's your analysis</h2>
       </div>
 
       {/* Fit Score */}
@@ -1154,7 +1062,10 @@ function ResultsStep({ results, data, showResults, onRestart }) {
           <p style={{ color: '#64748b', marginBottom: '20px' }}>
             Try Voice AI risk-free and hear exactly how it sounds calling your leads.
           </p>
-          <button style={{ padding: '16px 32px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', fontSize: '16px' }}>
+          <button 
+            onClick={() => setShowModal(true)}
+            style={{ padding: '16px 32px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', fontSize: '16px' }}
+          >
             Start a Free Trial →
           </button>
           <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '12px' }}>No credit card required • Cancel anytime</p>
@@ -1189,6 +1100,73 @@ function ResultsStep({ results, data, showResults, onRestart }) {
       <p style={{ textAlign: 'center', fontSize: '12px', color: '#94a3b8', marginTop: '24px' }}>
         * Projections based on industry averages. Actual results vary based on market conditions and lead quality.
       </p>
+
+      {/* Modal */}
+      {showModal && (
+        <div
+          onClick={() => setShowModal(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: '20px'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '16px',
+              padding: '24px',
+              maxWidth: '500px',
+              maxHeight: '90vh',
+              overflow: 'auto',
+              width: '100%',
+              position: 'relative'
+            }}
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'none',
+                border: 'none',
+                fontSize: '24px',
+                cursor: 'pointer',
+                color: '#64748b',
+                width: '32px',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#f1f5f9'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            >
+              ×
+            </button>
+            <h3 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '20px', color: '#0f172a' }}>
+              Start Your Free Trial
+            </h3>
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/g9bJBw8OHuWnYjXl9EgR"
+              style={{ width: '100%', height: '600px', border: 'none' }}
+              title="LeadCallr Free Trial"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
