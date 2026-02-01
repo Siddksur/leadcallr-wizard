@@ -246,23 +246,67 @@ export default function VoiceAIAssessment() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', color: '#1e293b', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ 
+      minHeight: '100vh', 
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%)',
+      color: '#f1f5f9', 
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Animated background gradient overlay */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }} />
+      
       {/* Header */}
-      <header style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0' }}>
+      <header style={{ 
+        padding: '20px 24px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        borderBottom: '1px solid rgba(99, 102, 241, 0.2)',
+        backdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(15, 23, 42, 0.5)',
+        position: 'relative',
+        zIndex: 10
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ 
+            width: '36px', 
+            height: '36px', 
+            borderRadius: '8px', 
+            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)'
+          }}>
             <svg style={{ width: '20px', height: '20px', color: 'white' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
             </svg>
           </div>
-          <span style={{ fontWeight: '600', fontSize: '18px', letterSpacing: '-0.02em' }}>LeadCallr AI</span>
+          <span style={{ fontWeight: '600', fontSize: '18px', letterSpacing: '-0.02em', color: '#f1f5f9' }}>LeadCallr AI</span>
         </div>
         {currentStep > 0 && currentStep < steps.length - 1 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '14px', color: '#64748b' }}>{Math.round(progressPercent)}%</span>
-            <div style={{ width: '128px', height: '4px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
+            <span style={{ fontSize: '14px', color: '#cbd5e1' }}>{Math.round(progressPercent)}%</span>
+            <div style={{ width: '128px', height: '6px', backgroundColor: 'rgba(99, 102, 241, 0.2)', borderRadius: '9999px', overflow: 'hidden' }}>
               <div 
-                style={{ height: '100%', backgroundColor: '#0f172a', borderRadius: '9999px', transition: 'width 0.5s ease-out', width: `${progressPercent}%` }}
+                style={{ 
+                  height: '100%', 
+                  background: 'linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)',
+                  borderRadius: '9999px', 
+                  transition: 'width 0.5s ease-out', 
+                  width: `${progressPercent}%`,
+                  boxShadow: '0 0 10px rgba(99, 102, 241, 0.6)'
+                }}
               />
             </div>
           </div>
@@ -270,7 +314,15 @@ export default function VoiceAIAssessment() {
       </header>
 
       {/* Main content */}
-      <main style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', minHeight: 'calc(100vh - 77px)' }}>
+      <main style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        padding: '24px', 
+        minHeight: 'calc(100vh - 77px)',
+        position: 'relative',
+        zIndex: 1
+      }}>
         <div 
           style={{ 
             width: '100%', 
@@ -291,39 +343,109 @@ export default function VoiceAIAssessment() {
 function IntroStep({ onNext }) {
   return (
     <div style={{ textAlign: 'center' }}>
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '9999px', backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', color: '#475569', fontSize: '14px', marginBottom: '32px' }}>
-        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981' }} />
+      <div style={{ 
+        display: 'inline-flex', 
+        alignItems: 'center', 
+        gap: '8px', 
+        padding: '8px 16px', 
+        borderRadius: '9999px', 
+        background: 'rgba(99, 102, 241, 0.1)',
+        border: '1px solid rgba(99, 102, 241, 0.3)', 
+        color: '#a5b4fc', 
+        fontSize: '14px', 
+        marginBottom: '32px',
+        backdropFilter: 'blur(10px)'
+      }}>
+        <span style={{ 
+          width: '6px', 
+          height: '6px', 
+          borderRadius: '50%', 
+          background: 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)',
+          boxShadow: '0 0 8px rgba(6, 182, 212, 0.6)'
+        }} />
         Free Assessment
       </div>
       
-      <h1 style={{ fontSize: '42px', fontWeight: '700', lineHeight: '1.1', letterSpacing: '-0.02em', marginBottom: '24px' }}>
+      <h1 style={{ 
+        fontSize: '42px', 
+        fontWeight: '700', 
+        lineHeight: '1.1', 
+        letterSpacing: '-0.02em', 
+        marginBottom: '24px',
+        background: 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
         Is Voice AI Right<br />
-        <span style={{ color: '#64748b' }}>For Your Business?</span>
+        <span style={{ 
+          background: 'linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text'
+        }}>For Your Business?</span>
       </h1>
       
-      <p style={{ fontSize: '18px', color: '#64748b', maxWidth: '480px', margin: '0 auto 32px', lineHeight: '1.6' }}>
+      <p style={{ fontSize: '18px', color: '#cbd5e1', maxWidth: '480px', margin: '0 auto 32px', lineHeight: '1.6' }}>
         Answer a few questions about your real estate business and we'll calculate 
         your potential ROI with real numbers.
       </p>
 
       <button
         onClick={onNext}
-        style={{ padding: '16px 32px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', fontSize: '18px', border: 'none', cursor: 'pointer', marginBottom: '16px' }}
+        style={{ 
+          padding: '16px 32px', 
+          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+          color: 'white', 
+          borderRadius: '9999px', 
+          fontWeight: '600', 
+          fontSize: '18px', 
+          border: 'none', 
+          cursor: 'pointer', 
+          marginBottom: '16px',
+          boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)',
+          transition: 'all 0.3s ease',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'translateY(-2px)';
+          e.target.style.boxShadow = '0 6px 25px rgba(99, 102, 241, 0.6)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.4)';
+        }}
       >
         Start Assessment →
       </button>
 
       <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '32px' }}>Takes about 2 minutes</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', paddingTop: '32px', borderTop: '1px solid #e2e8f0', maxWidth: '320px', margin: '0 auto' }}>
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(3, 1fr)', 
+        gap: '32px', 
+        paddingTop: '32px', 
+        borderTop: '1px solid rgba(99, 102, 241, 0.2)', 
+        maxWidth: '320px', 
+        margin: '0 auto' 
+      }}>
         {[
           { value: '500+', label: 'Agents Assessed' },
           { value: '2 min', label: 'To Complete' },
           { value: 'Free', label: 'ROI Analysis' },
         ].map((stat, i) => (
           <div key={i} style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a' }}>{stat.value}</div>
-            <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>{stat.label}</div>
+            <div style={{ 
+              fontSize: '20px', 
+              fontWeight: '600', 
+              background: 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>{stat.value}</div>
+            <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>{stat.label}</div>
           </div>
         ))}
       </div>
@@ -343,8 +465,8 @@ function ExperienceStep({ data, updateField, onNext }) {
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 1 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>How long have you been in real estate?</h2>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 1 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>How long have you been in real estate?</h2>
       </div>
 
       <div style={{ display: 'grid', gap: '12px' }}>
@@ -359,25 +481,45 @@ function ExperienceStep({ data, updateField, onNext }) {
               width: '100%',
               padding: '16px',
               borderRadius: '12px',
-              border: data.yearsInBusiness === opt.value ? '2px solid #0f172a' : '1px solid #e2e8f0',
-              backgroundColor: data.yearsInBusiness === opt.value ? '#f8fafc' : 'white',
+              border: data.yearsInBusiness === opt.value ? '2px solid #6366f1' : '1px solid rgba(99, 102, 241, 0.3)',
+              background: data.yearsInBusiness === opt.value 
+                ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)' 
+                : 'rgba(15, 23, 42, 0.4)',
+              backdropFilter: 'blur(10px)',
               textAlign: 'left',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              transition: 'all 0.2s ease',
+              boxShadow: data.yearsInBusiness === opt.value ? '0 4px 14px rgba(99, 102, 241, 0.3)' : 'none'
+            }}
+            onMouseEnter={(e) => {
+              if (data.yearsInBusiness !== opt.value) {
+                e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+                e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (data.yearsInBusiness !== opt.value) {
+                e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+                e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+              }
             }}
           >
-            <span style={{ fontWeight: '500', color: '#0f172a' }}>{opt.label}</span>
+            <span style={{ fontWeight: '500', color: '#f1f5f9' }}>{opt.label}</span>
             <div style={{
               width: '20px',
               height: '20px',
               borderRadius: '50%',
-              border: data.yearsInBusiness === opt.value ? 'none' : '2px solid #cbd5e1',
-              backgroundColor: data.yearsInBusiness === opt.value ? '#0f172a' : 'transparent',
+              border: data.yearsInBusiness === opt.value ? 'none' : '2px solid rgba(99, 102, 241, 0.5)',
+              background: data.yearsInBusiness === opt.value 
+                ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' 
+                : 'transparent',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              boxShadow: data.yearsInBusiness === opt.value ? '0 0 10px rgba(99, 102, 241, 0.6)' : 'none'
             }}>
               {data.yearsInBusiness === opt.value && (
                 <svg style={{ width: '12px', height: '12px', color: 'white' }} fill="currentColor" viewBox="0 0 20 20">
@@ -401,12 +543,14 @@ function MarketStep({ data, updateField, onNext, onBack }) {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
-    backgroundColor: 'white',
-    border: '1px solid #e2e8f0',
+    backgroundColor: 'rgba(15, 23, 42, 0.4)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
     borderRadius: '12px',
     fontSize: '16px',
     outline: 'none',
-    color: '#0f172a'
+    color: '#f1f5f9',
+    transition: 'all 0.2s ease'
   };
 
   const sliderStyle = {
@@ -414,20 +558,21 @@ function MarketStep({ data, updateField, onNext, onBack }) {
     height: '6px',
     borderRadius: '9999px',
     appearance: 'none',
-    backgroundColor: '#e2e8f0',
-    cursor: 'pointer'
+    backgroundColor: 'rgba(99, 102, 241, 0.2)',
+    cursor: 'pointer',
+    outline: 'none'
   };
 
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 2 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Tell us about your market</h2>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 2 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>Tell us about your market</h2>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
             Primary service area
           </label>
           <input
@@ -440,7 +585,7 @@ function MarketStep({ data, updateField, onNext, onBack }) {
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '16px' }}>
             Average home price in your market
           </label>
           <input
@@ -454,13 +599,13 @@ function MarketStep({ data, updateField, onNext, onBack }) {
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>$200K</span>
-            <span style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>{formatPrice(data.avgPrice)}</span>
+            <span style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>{formatPrice(data.avgPrice)}</span>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>$2M+</span>
           </div>
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '16px' }}>
             Your typical commission rate
           </label>
           <input
@@ -474,14 +619,33 @@ function MarketStep({ data, updateField, onNext, onBack }) {
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>1%</span>
-            <span style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>{data.commissionRate}%</span>
+            <span style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>{data.commissionRate}%</span>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>5%</span>
           </div>
         </div>
       </div>
 
       <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
-        <button onClick={onBack} style={{ padding: '14px 24px', border: '1px solid #e2e8f0', borderRadius: '9999px', fontWeight: '500', backgroundColor: 'white', cursor: 'pointer', color: '#374151' }}>
+        <button onClick={onBack} style={{ 
+          padding: '14px 24px', 
+          border: '1px solid rgba(99, 102, 241, 0.3)', 
+          borderRadius: '9999px', 
+          fontWeight: '500', 
+          background: 'rgba(15, 23, 42, 0.4)',
+          backdropFilter: 'blur(10px)',
+          cursor: 'pointer', 
+          color: '#cbd5e1',
+          transition: 'all 0.2s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+          e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+          e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+        }}
+        >
           Back
         </button>
         <button
@@ -490,12 +654,28 @@ function MarketStep({ data, updateField, onNext, onBack }) {
           style={{ 
             flex: 1, 
             padding: '14px 24px', 
-            backgroundColor: data.serviceArea ? '#0f172a' : '#94a3b8', 
+            background: data.serviceArea 
+              ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' 
+              : 'rgba(99, 102, 241, 0.3)', 
             color: 'white', 
             borderRadius: '9999px', 
             fontWeight: '600', 
             border: 'none', 
-            cursor: data.serviceArea ? 'pointer' : 'not-allowed' 
+            cursor: data.serviceArea ? 'pointer' : 'not-allowed',
+            boxShadow: data.serviceArea ? '0 4px 14px rgba(99, 102, 241, 0.4)' : 'none',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={(e) => {
+            if (data.serviceArea) {
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(99, 102, 241, 0.5)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (data.serviceArea) {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 14px rgba(99, 102, 241, 0.4)';
+            }
           }}
         >
           Continue
@@ -523,9 +703,9 @@ function DatabaseStep({ data, updateField, onNext, onBack }) {
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 3 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>How many contacts are in your database?</h2>
-        <p style={{ color: '#64748b', marginTop: '8px' }}>Past clients, leads, sphere — everyone in your CRM.</p>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 3 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>How many contacts are in your database?</h2>
+        <p style={{ color: '#94a3b8', marginTop: '8px' }}>Past clients, leads, sphere — everyone in your CRM.</p>
       </div>
 
       <div>
@@ -540,7 +720,7 @@ function DatabaseStep({ data, updateField, onNext, onBack }) {
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
           <span style={{ color: '#94a3b8', fontSize: '14px' }}>0</span>
-          <span style={{ fontSize: '28px', fontWeight: '700', color: '#0f172a' }}>{formatNumber(data.databaseSize)}</span>
+            <span style={{ fontSize: '28px', fontWeight: '700', color: '#f1f5f9' }}>{formatNumber(data.databaseSize)}</span>
           <span style={{ color: '#94a3b8', fontSize: '14px' }}>10,000+</span>
         </div>
       </div>
@@ -561,12 +741,14 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
-    backgroundColor: 'white',
-    border: '1px solid #e2e8f0',
+    backgroundColor: 'rgba(15, 23, 42, 0.4)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
     borderRadius: '12px',
     fontSize: '16px',
     outline: 'none',
-    color: '#0f172a'
+    color: '#f1f5f9',
+    transition: 'all 0.2s ease'
   };
 
   const sliderStyle = {
@@ -574,16 +756,17 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
     height: '6px',
     borderRadius: '9999px',
     appearance: 'none',
-    backgroundColor: '#e2e8f0',
-    cursor: 'pointer'
+    backgroundColor: 'rgba(99, 102, 241, 0.2)',
+    cursor: 'pointer',
+    outline: 'none'
   };
 
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 4 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Do you generate leads through paid ads?</h2>
-        <p style={{ color: '#64748b', marginTop: '8px' }}>Google, Facebook, Instagram, Zillow, etc.</p>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 4 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>Do you generate leads through paid ads?</h2>
+        <p style={{ color: '#94a3b8', marginTop: '8px' }}>Google, Facebook, Instagram, Zillow, etc.</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
@@ -592,13 +775,30 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
           style={{
             padding: '24px',
             borderRadius: '12px',
-            border: data.usesPaidAds === true ? '2px solid #0f172a' : '1px solid #e2e8f0',
-            backgroundColor: data.usesPaidAds === true ? '#f8fafc' : 'white',
+            border: data.usesPaidAds === true ? '2px solid #6366f1' : '1px solid rgba(99, 102, 241, 0.3)',
+            background: data.usesPaidAds === true 
+              ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)' 
+              : 'rgba(15, 23, 42, 0.4)',
+            backdropFilter: 'blur(10px)',
             textAlign: 'center',
             cursor: 'pointer',
             fontSize: '20px',
             fontWeight: '600',
-            color: '#0f172a'
+            color: '#f1f5f9',
+            transition: 'all 0.2s ease',
+            boxShadow: data.usesPaidAds === true ? '0 4px 14px rgba(99, 102, 241, 0.3)' : 'none'
+          }}
+          onMouseEnter={(e) => {
+            if (data.usesPaidAds !== true) {
+              e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+              e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (data.usesPaidAds !== true) {
+              e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+              e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+            }
           }}
         >
           Yes
@@ -613,13 +813,30 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
           style={{
             padding: '24px',
             borderRadius: '12px',
-            border: data.usesPaidAds === false ? '2px solid #0f172a' : '1px solid #e2e8f0',
-            backgroundColor: data.usesPaidAds === false ? '#f8fafc' : 'white',
+            border: data.usesPaidAds === false ? '2px solid #6366f1' : '1px solid rgba(99, 102, 241, 0.3)',
+            background: data.usesPaidAds === false 
+              ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)' 
+              : 'rgba(15, 23, 42, 0.4)',
+            backdropFilter: 'blur(10px)',
             textAlign: 'center',
             cursor: 'pointer',
             fontSize: '20px',
             fontWeight: '600',
-            color: '#0f172a'
+            color: '#f1f5f9',
+            transition: 'all 0.2s ease',
+            boxShadow: data.usesPaidAds === false ? '0 4px 14px rgba(99, 102, 241, 0.3)' : 'none'
+          }}
+          onMouseEnter={(e) => {
+            if (data.usesPaidAds !== false) {
+              e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+              e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (data.usesPaidAds !== false) {
+              e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+              e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+            }
           }}
         >
           No
@@ -629,7 +846,7 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
       {data.usesPaidAds === true && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '24px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '16px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '16px' }}>
               Monthly ad spend
             </label>
             <input
@@ -643,13 +860,13 @@ function LeadGenStep({ data, updateField, onNext, onBack }) {
             />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
               <span style={{ color: '#94a3b8', fontSize: '14px' }}>$500</span>
-              <span style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>${data.monthlyAdSpend.toLocaleString()}/mo</span>
+              <span style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>${data.monthlyAdSpend.toLocaleString()}/mo</span>
               <span style={{ color: '#94a3b8', fontSize: '14px' }}>$10K+</span>
             </div>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
               How many new leads per month?
             </label>
             <input
@@ -700,20 +917,22 @@ function FollowUpStep({ data, updateField, onNext, onBack }) {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
-    backgroundColor: 'white',
-    border: '1px solid #e2e8f0',
+    backgroundColor: 'rgba(15, 23, 42, 0.4)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
     borderRadius: '12px',
     fontSize: '16px',
     outline: 'none',
-    color: '#0f172a'
+    color: '#f1f5f9',
+    transition: 'all 0.2s ease'
   };
 
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 5 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Who handles lead follow-up?</h2>
-        <p style={{ color: '#64748b', marginTop: '8px' }}>Select all that apply.</p>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 5 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>Who handles lead follow-up?</h2>
+        <p style={{ color: '#94a3b8', marginTop: '8px' }}>Select all that apply.</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
@@ -724,12 +943,29 @@ function FollowUpStep({ data, updateField, onNext, onBack }) {
             style={{
               padding: '16px',
               borderRadius: '12px',
-              border: (data.whoFollowsUp || []).includes(opt.value) ? '2px solid #0f172a' : '1px solid #e2e8f0',
-              backgroundColor: (data.whoFollowsUp || []).includes(opt.value) ? '#f8fafc' : 'white',
+              border: (data.whoFollowsUp || []).includes(opt.value) ? '2px solid #6366f1' : '1px solid rgba(99, 102, 241, 0.3)',
+              background: (data.whoFollowsUp || []).includes(opt.value) 
+                ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)' 
+                : 'rgba(15, 23, 42, 0.4)',
+              backdropFilter: 'blur(10px)',
               textAlign: 'center',
               cursor: 'pointer',
               fontWeight: '500',
-              color: '#0f172a'
+              color: '#f1f5f9',
+              transition: 'all 0.2s ease',
+              boxShadow: (data.whoFollowsUp || []).includes(opt.value) ? '0 4px 14px rgba(99, 102, 241, 0.3)' : 'none'
+            }}
+            onMouseEnter={(e) => {
+              if (!(data.whoFollowsUp || []).includes(opt.value)) {
+                e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+                e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!(data.whoFollowsUp || []).includes(opt.value)) {
+                e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+                e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+              }
             }}
           >
             {opt.label}
@@ -739,7 +975,7 @@ function FollowUpStep({ data, updateField, onNext, onBack }) {
 
       {(data.whoFollowsUp || []).includes('isa') && (
         <div style={{ marginTop: '24px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
             What do you pay your ISA monthly?
           </label>
           <input
@@ -782,12 +1018,14 @@ function CurrentResultsStep({ data, updateField, onSubmit, onBack }) {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
-    backgroundColor: 'white',
-    border: '1px solid #e2e8f0',
+    backgroundColor: 'rgba(15, 23, 42, 0.4)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
     borderRadius: '12px',
     fontSize: '16px',
     outline: 'none',
-    color: '#0f172a'
+    color: '#f1f5f9',
+    transition: 'all 0.2s ease'
   };
 
   const sliderStyle = {
@@ -795,20 +1033,21 @@ function CurrentResultsStep({ data, updateField, onSubmit, onBack }) {
     height: '6px',
     borderRadius: '9999px',
     appearance: 'none',
-    backgroundColor: '#e2e8f0',
-    cursor: 'pointer'
+    backgroundColor: 'rgba(99, 102, 241, 0.2)',
+    cursor: 'pointer',
+    outline: 'none'
   };
 
   return (
     <div>
       <div style={{ marginBottom: '32px' }}>
-        <p style={{ color: '#64748b', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 6 of 7</p>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Your current prospecting</h2>
+        <p style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Question 6 of 7</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>Your current prospecting</h2>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '16px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '16px' }}>
             Hours per week on prospecting / follow-up
           </label>
           <input
@@ -822,13 +1061,13 @@ function CurrentResultsStep({ data, updateField, onSubmit, onBack }) {
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>0 hrs</span>
-            <span style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>{data.prospectingHours} hrs/week</span>
+            <span style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>{data.prospectingHours} hrs/week</span>
             <span style={{ color: '#94a3b8', fontSize: '14px' }}>20+ hrs</span>
           </div>
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
             Appointments booked monthly
           </label>
           <input
@@ -844,10 +1083,49 @@ function CurrentResultsStep({ data, updateField, onSubmit, onBack }) {
       </div>
 
       <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
-        <button onClick={onBack} style={{ padding: '14px 24px', border: '1px solid #e2e8f0', borderRadius: '9999px', fontWeight: '500', backgroundColor: 'white', cursor: 'pointer', color: '#374151' }}>
+        <button onClick={onBack} style={{ 
+          padding: '14px 24px', 
+          border: '1px solid rgba(99, 102, 241, 0.3)', 
+          borderRadius: '9999px', 
+          fontWeight: '500', 
+          background: 'rgba(15, 23, 42, 0.4)',
+          backdropFilter: 'blur(10px)',
+          cursor: 'pointer', 
+          color: '#cbd5e1',
+          transition: 'all 0.2s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+          e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+          e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+        }}
+        >
           Back
         </button>
-        <button onClick={onSubmit} style={{ flex: 1, padding: '14px 24px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer' }}>
+        <button onClick={onSubmit} style={{ 
+          flex: 1, 
+          padding: '14px 24px', 
+          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+          color: 'white', 
+          borderRadius: '9999px', 
+          fontWeight: '600', 
+          border: 'none', 
+          cursor: 'pointer',
+          boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)',
+          transition: 'all 0.3s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 6px 20px rgba(99, 102, 241, 0.5)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 4px 14px rgba(99, 102, 241, 0.4)';
+        }}
+        >
           See My Results →
         </button>
       </div>
@@ -873,15 +1151,27 @@ function ResultsStep({ results, showResults, onRestart }) {
   if (!results) return null;
 
   const getFitColor = (level) => {
-    if (level === 'high') return '#10b981';
-    if (level === 'medium') return '#f59e0b';
+    if (level === 'high') return '#06b6d4';
+    if (level === 'medium') return '#8b5cf6';
     return '#94a3b8';
   };
 
   const getFitBg = (level) => {
-    if (level === 'high') return { backgroundColor: '#ecfdf5', border: '1px solid #a7f3d0' };
-    if (level === 'medium') return { backgroundColor: '#fffbeb', border: '1px solid #fde68a' };
-    return { backgroundColor: '#f8fafc', border: '1px solid #e2e8f0' };
+    if (level === 'high') return { 
+      background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%)', 
+      border: '1px solid rgba(6, 182, 212, 0.4)',
+      backdropFilter: 'blur(10px)'
+    };
+    if (level === 'medium') return { 
+      background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%)', 
+      border: '1px solid rgba(139, 92, 246, 0.4)',
+      backdropFilter: 'blur(10px)'
+    };
+    return { 
+      background: 'rgba(15, 23, 42, 0.4)', 
+      border: '1px solid rgba(99, 102, 241, 0.2)',
+      backdropFilter: 'blur(10px)'
+    };
   };
 
   const getFitLabel = (level) => {
@@ -892,17 +1182,19 @@ function ResultsStep({ results, showResults, onRestart }) {
 
   const cardStyle = {
     padding: '20px',
-    backgroundColor: 'white',
+    background: 'rgba(15, 23, 42, 0.5)',
+    backdropFilter: 'blur(10px)',
     borderRadius: '16px',
-    border: '1px solid #e2e8f0',
-    marginBottom: '16px'
+    border: '1px solid rgba(99, 102, 241, 0.2)',
+    marginBottom: '16px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
   };
 
   const rowStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     padding: '12px 0',
-    borderBottom: '1px solid #f1f5f9',
+    borderBottom: '1px solid rgba(99, 102, 241, 0.2)',
     fontSize: '14px'
   };
 
@@ -914,21 +1206,35 @@ function ResultsStep({ results, showResults, onRestart }) {
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: getFitColor(results.fitLevel) }} />
           <span style={{ color: getFitColor(results.fitLevel) }}>{getFitLabel(results.fitLevel)}</span>
         </div>
-        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#0f172a' }}>Here's your analysis</h2>
+        <h2 style={{ fontSize: '28px', fontWeight: '700', letterSpacing: '-0.02em', color: '#f1f5f9' }}>Here's your analysis</h2>
       </div>
 
       {/* Fit Score */}
       <div style={cardStyle}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-          <span style={{ color: '#64748b', fontSize: '14px' }}>ROI-Based Fit Score</span>
+          <span style={{ color: '#94a3b8', fontSize: '14px' }}>ROI-Based Fit Score</span>
           <span style={{ fontSize: '24px', fontWeight: '700', color: getFitColor(results.fitLevel) }}>{results.fitScore}/100</span>
         </div>
-        <div style={{ height: '8px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-          <div style={{ height: '100%', backgroundColor: getFitColor(results.fitLevel), borderRadius: '9999px', transition: 'width 1s ease', width: showResults ? `${results.fitScore}%` : '0%' }} />
+        <div style={{ height: '8px', backgroundColor: 'rgba(99, 102, 241, 0.2)', borderRadius: '9999px', overflow: 'hidden' }}>
+          <div style={{ 
+            height: '100%', 
+            background: `linear-gradient(90deg, ${getFitColor(results.fitLevel)} 0%, ${results.fitLevel === 'high' ? '#8b5cf6' : '#6366f1'} 100%)`,
+            borderRadius: '9999px', 
+            transition: 'width 1s ease', 
+            width: showResults ? `${results.fitScore}%` : '0%',
+            boxShadow: `0 0 10px ${getFitColor(results.fitLevel)}40`
+          }} />
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '12px' }}>
           {results.fitFactors.map((factor, i) => (
-            <span key={i} style={{ padding: '6px 12px', backgroundColor: '#f8fafc', borderRadius: '9999px', fontSize: '12px', color: '#64748b' }}>
+            <span key={i} style={{ 
+              padding: '6px 12px', 
+              background: 'rgba(99, 102, 241, 0.1)', 
+              border: '1px solid rgba(99, 102, 241, 0.3)',
+              borderRadius: '9999px', 
+              fontSize: '12px', 
+              color: '#cbd5e1' 
+            }}>
               {factor}
             </span>
           ))}
@@ -938,30 +1244,30 @@ function ResultsStep({ results, showResults, onRestart }) {
       {/* Database Opportunity (One-Time) */}
       <div style={cardStyle}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-          <h3 style={{ fontWeight: '600', fontSize: '18px', color: '#0f172a' }}>Database Opportunity</h3>
-          <span style={{ padding: '4px 10px', backgroundColor: '#dbeafe', color: '#1d4ed8', borderRadius: '9999px', fontSize: '12px', fontWeight: '500' }}>One-Time</span>
+          <h3 style={{ fontWeight: '600', fontSize: '18px', color: '#f1f5f9' }}>Database Opportunity</h3>
+          <span style={{ padding: '4px 10px', background: 'rgba(99, 102, 241, 0.2)', color: '#cbd5e1', borderRadius: '9999px', fontSize: '12px', fontWeight: '500', border: '1px solid rgba(99, 102, 241, 0.3)' }}>One-Time</span>
         </div>
-        <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: '#cbd5e1', marginBottom: '16px' }}>
           The untapped value sitting in your existing database when Voice AI contacts everyone.
         </p>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Potential Deals</div>
-            <div style={{ fontSize: '28px', fontWeight: '700', color: '#0f172a' }}>{results.dbDeals}</div>
+          <div style={{ padding: '16px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Potential Deals</div>
+            <div style={{ fontSize: '28px', fontWeight: '700', color: '#f1f5f9' }}>{results.dbDeals}</div>
           </div>
-          <div style={{ padding: '16px', backgroundColor: '#f0fdf4', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Potential GCI</div>
-            <div style={{ fontSize: '28px', fontWeight: '700', color: '#10b981' }}>${results.dbGCI.toLocaleString()}</div>
+          <div style={{ padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Potential GCI</div>
+            <div style={{ fontSize: '28px', fontWeight: '700', color: '#06b6d4' }}>${results.dbGCI.toLocaleString()}</div>
           </div>
         </div>
 
         <div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Database contacts</span><span style={{ color: '#0f172a' }}>{results.dbSize.toLocaleString()}</span></div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Pick up (20%)</span><span style={{ color: '#0f172a' }}>{results.dbConversations.toLocaleString()} conversations</span></div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Book appointment (5%)</span><span style={{ color: '#0f172a' }}>{results.dbAppointments} appointments</span></div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Close deal (20%)</span><span style={{ color: '#0f172a' }}>{results.dbDeals} deals</span></div>
-          <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#64748b' }}>GCI per deal</span><span style={{ color: '#0f172a' }}>${results.gciPerDeal.toLocaleString()}</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Database contacts</span><span style={{ color: '#f1f5f9' }}>{results.dbSize.toLocaleString()}</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Pick up (20%)</span><span style={{ color: '#f1f5f9' }}>{results.dbConversations.toLocaleString()} conversations</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Book appointment (5%)</span><span style={{ color: '#f1f5f9' }}>{results.dbAppointments} appointments</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Close deal (20%)</span><span style={{ color: '#f1f5f9' }}>{results.dbDeals} deals</span></div>
+          <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#94a3b8' }}>GCI per deal</span><span style={{ color: '#f1f5f9' }}>${results.gciPerDeal.toLocaleString()}</span></div>
         </div>
       </div>
 
@@ -969,87 +1275,87 @@ function ResultsStep({ results, showResults, onRestart }) {
       {results.monthlyNewLeads > 0 && (
         <div style={cardStyle}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <h3 style={{ fontWeight: '600', fontSize: '18px', color: '#0f172a' }}>New Leads Opportunity</h3>
-            <span style={{ padding: '4px 10px', backgroundColor: '#fef3c7', color: '#b45309', borderRadius: '9999px', fontSize: '12px', fontWeight: '500' }}>Ongoing Yearly</span>
+            <h3 style={{ fontWeight: '600', fontSize: '18px', color: '#f1f5f9' }}>New Leads Opportunity</h3>
+            <span style={{ padding: '4px 10px', background: 'rgba(139, 92, 246, 0.2)', color: '#cbd5e1', borderRadius: '9999px', fontSize: '12px', fontWeight: '500', border: '1px solid rgba(139, 92, 246, 0.3)' }}>Ongoing Yearly</span>
           </div>
-          <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '16px' }}>
+          <p style={{ fontSize: '14px', color: '#cbd5e1', marginBottom: '16px' }}>
             Additional revenue from your ongoing lead generation, calculated annually.
           </p>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '16px' }}>
-            <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px' }}>
-              <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Deals Per Year</div>
-              <div style={{ fontSize: '28px', fontWeight: '700', color: '#0f172a' }}>{results.yearlyNewLeadDeals}</div>
+            <div style={{ padding: '16px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '12px' }}>
+              <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Deals Per Year</div>
+              <div style={{ fontSize: '28px', fontWeight: '700', color: '#f1f5f9' }}>{results.yearlyNewLeadDeals}</div>
             </div>
-            <div style={{ padding: '16px', backgroundColor: '#f0fdf4', borderRadius: '12px' }}>
-              <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>GCI Per Year</div>
-              <div style={{ fontSize: '28px', fontWeight: '700', color: '#10b981' }}>${results.yearlyNewLeadGCI.toLocaleString()}</div>
+            <div style={{ padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '12px' }}>
+              <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>GCI Per Year</div>
+              <div style={{ fontSize: '28px', fontWeight: '700', color: '#06b6d4' }}>${results.yearlyNewLeadGCI.toLocaleString()}</div>
             </div>
           </div>
 
           <div>
-            <div style={rowStyle}><span style={{ color: '#64748b' }}>New leads per month</span><span style={{ color: '#0f172a' }}>{results.monthlyNewLeads}</span></div>
-            <div style={rowStyle}><span style={{ color: '#64748b' }}>Pick up (40%)</span><span style={{ color: '#0f172a' }}>{results.monthlyNewLeadConversations} conversations/mo</span></div>
-            <div style={rowStyle}><span style={{ color: '#64748b' }}>Book appointment (5%)</span><span style={{ color: '#0f172a' }}>{results.monthlyNewLeadAppointments} appointments/mo</span></div>
-            <div style={rowStyle}><span style={{ color: '#64748b' }}>Close deal (20%)</span><span style={{ color: '#0f172a' }}>{results.monthlyNewLeadDeals} deals/mo</span></div>
-            <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#64748b' }}>Yearly (×12)</span><span style={{ fontWeight: '600', color: '#0f172a' }}>{results.yearlyNewLeadDeals} deals/year</span></div>
+            <div style={rowStyle}><span style={{ color: '#94a3b8' }}>New leads per month</span><span style={{ color: '#f1f5f9' }}>{results.monthlyNewLeads}</span></div>
+            <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Pick up (40%)</span><span style={{ color: '#f1f5f9' }}>{results.monthlyNewLeadConversations} conversations/mo</span></div>
+            <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Book appointment (5%)</span><span style={{ color: '#f1f5f9' }}>{results.monthlyNewLeadAppointments} appointments/mo</span></div>
+            <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Close deal (20%)</span><span style={{ color: '#f1f5f9' }}>{results.monthlyNewLeadDeals} deals/mo</span></div>
+            <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#94a3b8' }}>Yearly (×12)</span><span style={{ fontWeight: '600', color: '#f1f5f9' }}>{results.yearlyNewLeadDeals} deals/year</span></div>
           </div>
         </div>
       )}
 
       {/* Time Savings */}
       <div style={cardStyle}>
-        <h3 style={{ fontWeight: '600', fontSize: '18px', marginBottom: '16px', color: '#0f172a' }}>Time Savings</h3>
+        <h3 style={{ fontWeight: '600', fontSize: '18px', marginBottom: '16px', color: '#f1f5f9' }}>Time Savings</h3>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Hours Saved</div>
-            <div style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>{results.hoursSavedYearly}</div>
+          <div style={{ padding: '16px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Hours Saved</div>
+            <div style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>{results.hoursSavedYearly}</div>
             <div style={{ fontSize: '12px', color: '#94a3b8' }}>per year</div>
           </div>
-          <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Time Value</div>
-            <div style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>${results.timeValueSaved.toLocaleString()}</div>
+          <div style={{ padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Time Value</div>
+            <div style={{ fontSize: '24px', fontWeight: '700', color: '#06b6d4' }}>${results.timeValueSaved.toLocaleString()}</div>
             <div style={{ fontSize: '12px', color: '#94a3b8' }}>at $150/hr</div>
           </div>
         </div>
 
         <div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Current prospecting hours</span><span style={{ color: '#0f172a' }}>{results.prospectingHours} hrs/week</span></div>
-          <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#64748b' }}>Hours saved weekly (80%)</span><span style={{ color: '#0f172a' }}>{results.hoursSavedWeekly} hrs/week</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Current prospecting hours</span><span style={{ color: '#f1f5f9' }}>{results.prospectingHours} hrs/week</span></div>
+          <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#94a3b8' }}>Hours saved weekly (80%)</span><span style={{ color: '#f1f5f9' }}>{results.hoursSavedWeekly} hrs/week</span></div>
         </div>
       </div>
 
       {/* Investment & ROI */}
       <div style={cardStyle}>
-        <h3 style={{ fontWeight: '600', fontSize: '18px', marginBottom: '16px', color: '#0f172a' }}>Investment & ROI</h3>
+        <h3 style={{ fontWeight: '600', fontSize: '18px', marginBottom: '16px', color: '#f1f5f9' }}>Investment & ROI</h3>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Year 1 Potential GCI</div>
-            <div style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a' }}>${results.totalYear1GCI.toLocaleString()}</div>
+          <div style={{ padding: '16px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Year 1 Potential GCI</div>
+            <div style={{ fontSize: '24px', fontWeight: '700', color: '#f1f5f9' }}>${results.totalYear1GCI.toLocaleString()}</div>
             <div style={{ fontSize: '12px', color: '#94a3b8' }}>database + new leads</div>
           </div>
-          <div style={{ padding: '16px', backgroundColor: '#f0fdf4', borderRadius: '12px' }}>
-            <div style={{ fontSize: '14px', color: '#64748b', marginBottom: '4px' }}>Year 1 ROI</div>
-            <div style={{ fontSize: '24px', fontWeight: '700', color: '#10b981' }}>{results.roi.toLocaleString()}%</div>
+          <div style={{ padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '12px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '4px' }}>Year 1 ROI</div>
+            <div style={{ fontSize: '24px', fontWeight: '700', color: '#06b6d4' }}>{results.roi.toLocaleString()}%</div>
             <div style={{ fontSize: '12px', color: '#94a3b8' }}>return on investment</div>
           </div>
         </div>
 
         <div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Voice AI monthly cost</span><span style={{ color: '#0f172a' }}>$500/mo</span></div>
-          <div style={rowStyle}><span style={{ color: '#64748b' }}>Voice AI yearly cost</span><span style={{ color: '#0f172a' }}>${results.yearlyVoiceAICost.toLocaleString()}/yr</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Voice AI monthly cost</span><span style={{ color: '#f1f5f9' }}>$500/mo</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Voice AI yearly cost</span><span style={{ color: '#f1f5f9' }}>${results.yearlyVoiceAICost.toLocaleString()}/yr</span></div>
           {results.potentialSavings > 0 && (
             <>
-              <div style={rowStyle}><span style={{ color: '#64748b' }}>Current ISA cost</span><span style={{ color: '#0f172a' }}>${results.yearlyISACost.toLocaleString()}/yr</span></div>
-              <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#64748b' }}>Potential ISA savings</span><span style={{ color: '#10b981', fontWeight: '600' }}>+${results.potentialSavings.toLocaleString()}/yr</span></div>
+              <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Current ISA cost</span><span style={{ color: '#f1f5f9' }}>${results.yearlyISACost.toLocaleString()}/yr</span></div>
+              <div style={{...rowStyle, borderBottom: 'none'}}><span style={{ color: '#94a3b8' }}>Potential ISA savings</span><span style={{ color: '#06b6d4', fontWeight: '600' }}>+${results.potentialSavings.toLocaleString()}/yr</span></div>
             </>
           )}
         </div>
 
-        <div style={{ marginTop: '16px', padding: '16px', backgroundColor: '#f0fdf4', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
-          <p style={{ fontSize: '14px', color: '#166534', margin: 0 }}>
+        <div style={{ marginTop: '16px', padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', borderRadius: '12px', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
+          <p style={{ fontSize: '14px', color: '#cbd5e1', margin: 0 }}>
             <strong>Bottom line:</strong> Voice AI pays for itself with just {Math.ceil(results.yearlyVoiceAICost / results.gciPerDeal * 10) / 10} deal{Math.ceil(results.yearlyVoiceAICost / results.gciPerDeal) !== 1 ? 's' : ''} per year. Your potential is {results.dbDeals + results.yearlyNewLeadDeals} deals.
           </p>
         </div>
@@ -1057,14 +1363,33 @@ function ResultsStep({ results, showResults, onRestart }) {
 
       {/* CTA */}
       {results.fitLevel === 'high' || results.fitLevel === 'medium' ? (
-        <div style={{ padding: '24px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#0f172a' }}>Ready to see Voice AI in action?</h3>
-          <p style={{ color: '#64748b', marginBottom: '20px' }}>
+        <div style={{ padding: '24px', background: 'rgba(15, 23, 42, 0.5)', backdropFilter: 'blur(10px)', borderRadius: '16px', border: '1px solid rgba(99, 102, 241, 0.2)', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#f1f5f9' }}>Ready to see Voice AI in action?</h3>
+          <p style={{ color: '#cbd5e1', marginBottom: '20px' }}>
             Try Voice AI risk-free and hear exactly how it sounds calling your leads.
           </p>
           <button 
             onClick={() => setShowModal(true)}
-            style={{ padding: '16px 32px', backgroundColor: '#0f172a', color: 'white', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', fontSize: '16px' }}
+            style={{ 
+              padding: '16px 32px', 
+              background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+              color: 'white', 
+              borderRadius: '9999px', 
+              fontWeight: '600', 
+              border: 'none', 
+              cursor: 'pointer', 
+              fontSize: '16px',
+              boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 25px rgba(99, 102, 241, 0.6)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.4)';
+            }}
           >
             Start a Free Trial →
           </button>
@@ -1072,25 +1397,44 @@ function ResultsStep({ results, showResults, onRestart }) {
           
           <button 
             onClick={onRestart}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '20px auto 0', padding: '8px 16px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: '#64748b', fontSize: '14px' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '20px auto 0', padding: '8px 16px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: '#94a3b8', fontSize: '14px' }}
           >
             <span style={{ fontSize: '18px' }}>←</span> Take assessment again
           </button>
         </div>
       ) : (
-        <div style={{ padding: '24px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#0f172a' }}>Voice AI might not be the best fit right now</h3>
-          <p style={{ color: '#64748b', marginBottom: '20px' }}>
+        <div style={{ padding: '24px', background: 'rgba(15, 23, 42, 0.5)', backdropFilter: 'blur(10px)', borderRadius: '16px', border: '1px solid rgba(99, 102, 241, 0.2)', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#f1f5f9' }}>Voice AI might not be the best fit right now</h3>
+          <p style={{ color: '#cbd5e1', marginBottom: '20px' }}>
             Based on your current situation, you might see better ROI by first growing your database or lead flow. 
             That said, every business is unique — happy to chat if you'd like.
           </p>
-          <button style={{ padding: '12px 24px', border: '1px solid #e2e8f0', borderRadius: '9999px', fontWeight: '500', backgroundColor: 'white', cursor: 'pointer', color: '#374151' }}>
+          <button style={{ 
+            padding: '12px 24px', 
+            border: '1px solid rgba(99, 102, 241, 0.3)', 
+            borderRadius: '9999px', 
+            fontWeight: '500', 
+            background: 'rgba(15, 23, 42, 0.4)',
+            backdropFilter: 'blur(10px)',
+            cursor: 'pointer', 
+            color: '#cbd5e1',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+            e.target.style.background = 'rgba(99, 102, 241, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+            e.target.style.background = 'rgba(15, 23, 42, 0.4)';
+          }}
+          >
             Let's Chat Anyway
           </button>
           
           <button 
             onClick={onRestart}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '20px auto 0', padding: '8px 16px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: '#64748b', fontSize: '14px' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '20px auto 0', padding: '8px 16px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: '#94a3b8', fontSize: '14px' }}
           >
             <span style={{ fontSize: '18px' }}>←</span> Take assessment again
           </button>
