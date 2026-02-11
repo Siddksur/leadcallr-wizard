@@ -424,7 +424,7 @@ function IntroStep({ onNext }) {
 
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(3, 1fr)', 
+        gridTemplateColumns: 'repeat(2, 1fr)', 
         gap: '32px', 
         paddingTop: '32px', 
         borderTop: '1px solid rgba(99, 102, 241, 0.2)', 
@@ -432,7 +432,6 @@ function IntroStep({ onNext }) {
         margin: '0 auto' 
       }}>
         {[
-          { value: '500+', label: 'Agents Assessed' },
           { value: '2 min', label: 'To Complete' },
           { value: 'Free', label: 'ROI Analysis' },
         ].map((stat, i) => (
@@ -1344,7 +1343,7 @@ function ResultsStep({ results, showResults, onRestart }) {
         </div>
 
         <div>
-          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Voice AI monthly cost</span><span style={{ color: '#f1f5f9' }}>$500/mo</span></div>
+          <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Voice AI monthly cost</span><span style={{ color: '#f1f5f9' }}>Starts at $500/mo</span></div>
           <div style={rowStyle}><span style={{ color: '#94a3b8' }}>Voice AI yearly cost</span><span style={{ color: '#f1f5f9' }}>${results.yearlyVoiceAICost.toLocaleString()}/yr</span></div>
           {results.potentialSavings > 0 && (
             <>
@@ -1356,7 +1355,7 @@ function ResultsStep({ results, showResults, onRestart }) {
 
         <div style={{ marginTop: '16px', padding: '16px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%)', borderRadius: '12px', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
           <p style={{ fontSize: '14px', color: '#cbd5e1', margin: 0 }}>
-            <strong>Bottom line:</strong> Voice AI pays for itself with just {Math.ceil(results.yearlyVoiceAICost / results.gciPerDeal * 10) / 10} deal{Math.ceil(results.yearlyVoiceAICost / results.gciPerDeal) !== 1 ? 's' : ''} per year. Your potential is {results.dbDeals + results.yearlyNewLeadDeals} deals.
+            <strong>Bottom line:</strong> Your potential: {results.dbDeals + results.yearlyNewLeadDeals} deal{(results.dbDeals + results.yearlyNewLeadDeals) !== 1 ? 's' : ''} in Year 1. Voice AI costs {results.yearlyVoiceAICost / results.gciPerDeal < 1 ? 'less than one deal per year' : `the equivalent of about ${Math.round(results.yearlyVoiceAICost / results.gciPerDeal)} deal${Math.round(results.yearlyVoiceAICost / results.gciPerDeal) !== 1 ? 's' : ''} per year`}—the math speaks for itself.
           </p>
         </div>
       </div>
