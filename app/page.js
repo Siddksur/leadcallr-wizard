@@ -572,7 +572,7 @@ function MarketStep({ data, updateField, onNext, onBack }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <div>
           <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
-            Primary service area
+            Primary service area <span style={{ color: '#94a3b8', fontWeight: '400' }}>(optional)</span>
           </label>
           <input
             type="text"
@@ -649,32 +649,25 @@ function MarketStep({ data, updateField, onNext, onBack }) {
         </button>
         <button
           onClick={onNext}
-          disabled={!data.serviceArea}
           style={{ 
             flex: 1, 
             padding: '14px 24px', 
-            background: data.serviceArea 
-              ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' 
-              : 'rgba(99, 102, 241, 0.3)', 
+            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', 
             color: 'white', 
             borderRadius: '9999px', 
             fontWeight: '600', 
             border: 'none', 
-            cursor: data.serviceArea ? 'pointer' : 'not-allowed',
-            boxShadow: data.serviceArea ? '0 4px 14px rgba(99, 102, 241, 0.4)' : 'none',
+            cursor: 'pointer',
+            boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)',
             transition: 'all 0.3s ease'
           }}
           onMouseEnter={(e) => {
-            if (data.serviceArea) {
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 6px 20px rgba(99, 102, 241, 0.5)';
-            }
+            e.target.style.transform = 'translateY(-1px)';
+            e.target.style.boxShadow = '0 6px 20px rgba(99, 102, 241, 0.5)';
           }}
           onMouseLeave={(e) => {
-            if (data.serviceArea) {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 14px rgba(99, 102, 241, 0.4)';
-            }
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = '0 4px 14px rgba(99, 102, 241, 0.4)';
           }}
         >
           Continue
